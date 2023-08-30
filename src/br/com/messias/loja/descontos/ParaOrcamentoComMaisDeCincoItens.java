@@ -12,11 +12,13 @@ public class ParaOrcamentoComMaisDeCincoItens extends Desconto{
 	}
 
 	@Override
-	public BigDecimal calcular(Orcamento orcamento) {
-		if(orcamento.getQtdItens() > 5) {
+	protected BigDecimal efetuarCalculo(Orcamento orcamento) {
 		return orcamento.getValor().multiply(new BigDecimal("0.1"));
-		}
-		return proximo.calcular(orcamento);
+	}
+
+	@Override
+	protected boolean devoAplicar(Orcamento orcamento) {
+		return orcamento.getQtdItens() > 5;
 	}
 
 }
