@@ -2,31 +2,41 @@
 
 import java.math.BigDecimal;
 
+import br.com.messias.loja.orcamento.situacao.EmAnalise;
+import br.com.messias.loja.orcamento.situacao.SituacaoOrcamento;
+
 public class Orcamento {
 
 	private BigDecimal valor;
 	private int qtdItens;
-	private String situacao;
+	private SituacaoOrcamento situacao;
 	
 
 	public Orcamento(BigDecimal valor, int qtdItens) {
 		super();
 		this.valor = valor;
 		this.qtdItens = qtdItens;
+		this.situacao = new EmAnalise();
 	}
 	
 	
 	public void aplicarDescontoExtra() {
 		
-		BigDecimal valorDoDescontoExtra = BigDecimal.ZERO;
+		BigDecimal valorDoDescontoExtra = this.situacao.calcularValorDescontoEXtra(this);		
+		this.valor = this.valor.subtract(valorDoDescontoExtra);
+	}
+	
+	public void aprovar() {
+		this.situacao.aprovar(this);
+	}
+	
+	public void reprovar() {
+		this.situacao.reprovar(this);
+	}
+	
+	public void finalizar() {
+		this.situacao.finalizar(this);
 		
-		if(situacao.equals("EM_ANALISE")) {
-			valorDoDescontoExtra = new BigDecimal("0.05");
-		}else if(situacao.equals("APROVADO")) {
-			valorDoDescontoExtra = new BigDecimal("0.02");
-		}
-		
-		this.valor = this.valor.multiply(valorDoDescontoExtra);
 	}
 
 	public BigDecimal getValor() {
@@ -44,5 +54,17 @@ public class Orcamento {
 	public void setQtdItens(int qtdItens) {
 		this.qtdItens = qtdItens;
 	}
+
+
+	public SituacaoOrcamento getSituacao() {
+		return situacao;
+	}
+
+
+	public void setSituacao(SituacaoOrcamento situacao) {
+		this.situacao = situacao;
+	}
+	
+	
 	
 }
