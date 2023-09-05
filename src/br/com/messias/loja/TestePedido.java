@@ -2,6 +2,7 @@ package br.com.messias.loja;
 
 import java.math.BigDecimal;
 
+import br.com.messias.loja.pedido.GeraPedidoHandler;
 import br.com.messias.loja.pedido.GerarPedido;
 
 public class TestePedido {
@@ -12,7 +13,9 @@ public class TestePedido {
 		
 		
 		GerarPedido gerarPedido = new GerarPedido(cliente,new BigDecimal("100") , 5);
-		gerarPedido.executa();
+		
+		GeraPedidoHandler geraPedidoHandler = new GeraPedidoHandler(/*dependencias*/);
+		geraPedidoHandler.execute(gerarPedido);
 		
 	}
 }
