@@ -3,6 +3,7 @@
 import java.math.BigDecimal;
 
 import br.com.messias.loja.orcamento.situacao.EmAnalise;
+import br.com.messias.loja.orcamento.situacao.Finalizado;
 import br.com.messias.loja.orcamento.situacao.SituacaoOrcamento;
 
 public class Orcamento {
@@ -63,6 +64,11 @@ public class Orcamento {
 
 	public void setSituacao(SituacaoOrcamento situacao) {
 		this.situacao = situacao;
+	}
+
+
+	public boolean isFinalizado() {
+		return this.situacao instanceof Finalizado;
 	}
 	
 	
