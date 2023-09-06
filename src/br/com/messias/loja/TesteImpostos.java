@@ -5,13 +5,15 @@ import java.math.BigDecimal;
 import br.com.messias.loja.imposto.CalculadoraDeImpostos;
 import br.com.messias.loja.imposto.ICMS;
 import br.com.messias.loja.imposto.ISS;
+import br.com.messias.loja.orcamento.ItemOrcamento;
 import br.com.messias.loja.orcamento.Orcamento;
 
 public class TesteImpostos {
 
 	public static void main(String[] args) {
 		
-		Orcamento orcamento = new Orcamento(new BigDecimal("100"),1);
+		Orcamento orcamento = new Orcamento();
+		orcamento.addItemOrcamento(new ItemOrcamento(new BigDecimal("100")));
 		 	
 		CalculadoraDeImpostos calculadoraDeImpostos = new CalculadoraDeImpostos();
 		
