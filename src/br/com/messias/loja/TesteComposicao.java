@@ -19,6 +19,8 @@ public class TesteComposicao {
 		novo.aprovar();
 		
 		System.out.println(novo.getValor());
+		System.out.println(novo.getValor());
+		System.out.println(novo.getValor());
 		
 		
 		
