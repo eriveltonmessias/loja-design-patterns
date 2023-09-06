@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import br.com.messias.loja.orcamento.ItemOrcamento;
 import br.com.messias.loja.orcamento.Orcamento;
+import br.com.messias.loja.orcamento.OrcamentoProxy;
 
 public class TesteComposicao {
 
@@ -18,7 +19,11 @@ public class TesteComposicao {
 		novo.addItemOrcamento(antigo);
 		novo.aprovar();
 		
-		System.out.println(novo.getValor());
+		OrcamentoProxy orcamentoProxy = new OrcamentoProxy(novo);
+		
+		System.out.println(orcamentoProxy.getValor());
+		System.out.println(orcamentoProxy.getValor());
+		System.out.println(orcamentoProxy.getValor());
 		
 		
 		
