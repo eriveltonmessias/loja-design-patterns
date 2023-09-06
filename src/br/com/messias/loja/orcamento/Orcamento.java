@@ -1,6 +1,5 @@
  package br.com.messias.loja.orcamento;
 
-import java.awt.event.ItemEvent;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +8,10 @@ import br.com.messias.loja.orcamento.situacao.EmAnalise;
 import br.com.messias.loja.orcamento.situacao.Finalizado;
 import br.com.messias.loja.orcamento.situacao.SituacaoOrcamento;
 
-public class Orcamento {
+public class Orcamento implements Orcavel{
 
 	private BigDecimal valor;
-	private List<ItemOrcamento> itens;
+	private List<Orcavel> itens;
 	private SituacaoOrcamento situacao;
 	
 
@@ -52,13 +51,13 @@ public class Orcamento {
 	}
 
 
-	public void addItemOrcamento(ItemOrcamento ItemOrcamento) {
+	public void addItemOrcamento(Orcavel ItemOrcamento) {
 		this.valor = this.valor.add(ItemOrcamento.getValor());
 		this.itens.add(ItemOrcamento);
 	}
 
 
-	public List<ItemOrcamento> getItens() {
+	public List<Orcavel> getItens() {
 		return itens;
 	}
 
