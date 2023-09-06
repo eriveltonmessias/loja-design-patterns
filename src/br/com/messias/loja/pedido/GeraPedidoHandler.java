@@ -3,6 +3,7 @@ package br.com.messias.loja.pedido;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import br.com.messias.loja.orcamento.ItemOrcamento;
 import br.com.messias.loja.orcamento.Orcamento;
 import br.com.messias.loja.pedido.acao.AcaoAposGerarPedido;
 
@@ -19,7 +20,8 @@ public class GeraPedidoHandler /*implements commandsInterface*/{
 	}
 
 	public void execute(GerarPedido dados) {
-		Orcamento orcamento = new Orcamento(dados.getValorOrcamento(), dados.getQtdItens());
+		Orcamento orcamento = new Orcamento();
+		orcamento.addItemOrcamento(new ItemOrcamento(dados.getValorOrcamento()));
 		Pedido pedido = new Pedido(dados.getCliente(), LocalDateTime.now(), orcamento);
 
 			this.acoes.forEach(a -> a.executar(pedido));
